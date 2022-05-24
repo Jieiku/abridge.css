@@ -1,0 +1,42 @@
+{
+  "name": "abridge.css",
+  "version": "0.4.1",
+  "description": "A classless CSS library",
+  "auto": "dist/abridge.min.css",
+  "dark": "dist/abridge-dark.min.css",
+  "light": "dist/abridge-light.min.css",
+  "blueauto": "dist/abridge-blue.min.css",
+  "bluenight": "dist/abridge-bluenight.min.css",
+  "bluelight": "dist/abridge-bluelight.min.css",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jieiku/abridge.css.git"
+  },
+  "keywords": [
+    "css",
+    "html",
+    "sanitize",
+    "normalize",
+    "semantic",
+    "style"
+  ],
+  "author": "Jake G <106644+Jieiku@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jieiku/abridge.css/issues"
+  },
+  "homepage": "https://github.com/Jieiku/abridge.css",
+  "scripts": {
+    "auto": "sass --no-source-map --style compressed abridge.scss dist/abridge.min.css",
+    "dark": "sass --no-source-map --style compressed abridge-dark.scss dist/abridge-dark.min.css",
+    "light": "sass --no-source-map --style compressed abridge-light.scss dist/abridge-light.min.css",
+    "blueauto": "sass --no-source-map --style compressed abridge-blue.scss dist/abridge-blue.min.css",
+    "bluenight": "sass --no-source-map --style compressed abridge-bluenight.scss dist/abridge-bluenight.min.css",
+    "bluelight": "sass --no-source-map --style compressed abridge-bluelight.scss dist/abridge-bluelight.min.css",
+    "start": "yarn auto dark light blueauto bluenight bluelight"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1",
+    "sass": "^1.49.11"
+  }
+}

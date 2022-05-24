@@ -1,0 +1,79 @@
+/**
+ * Horizontal Nav
+ * https://github.com/raj457036/attriCSS
+ */
+.cnav {
+  color: var(--a3);//pagination color current page
+}
+main nav {
+  margin-top: var(--s2);//pagination margin
+}
+.off {
+  color: var(--c4);
+  font-weight: var(--fh);
+  border: .1rem solid var(--c3);
+  border-radius: var(--br);
+  padding: .1rem var(--s1);
+  margin: .1rem;
+}
+main nav a,
+main nav a:visited {//pagination link styling
+  font-weight: var(--fh);
+  border: .1rem solid var(--c4);
+  border-radius: var(--br);
+  padding: .1rem var(--s1);
+  margin: .1rem;
+}
+main nav a:hover {//makes border of pagination links hover color
+  border-color: var(--a3);
+}
+header > nav > div:first-of-type {//puts logo on left and menu/search on right
+  margin-left: auto
+}
+nav > div {
+  ul {
+    line-height: 2;
+    margin-top: 0;
+    padding-bottom: var(--s1);
+  }
+  display: block;
+  margin-left: var(--s1);//add some spacing between nav divs
+}
+nav {
+  align-items: center;
+  justify-content: center;//center pagination horizontally
+  display: flex;
+  div h2 {
+    font-size: 1rem;
+    &:hover {
+      color: var(--a3);
+    }
+  }
+  header {
+    display: inline;
+  }
+  header h1, div ul {
+    margin-bottom: 0
+  }
+  ul li {
+    display: inline-block;
+    margin: 0 0.2rem;
+    position: relative;
+    text-align: left;
+  }
+}
+// breakpoint makes header responsive for mobile layouts
+@if map-get($breakpoints, "md") {
+  @media (max-width: map-get($breakpoints, "md")) {
+    header nav {
+      display: flex;
+      flex-direction: column;
+      header {
+        text-align: center
+      }
+      div {
+        margin: auto // keeps top menu/search centered in mobile view
+      }
+    }
+  }
+}
