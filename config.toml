@@ -1,0 +1,210 @@
+base_url = "https://abridgecss.netlify.app" # do NOT include a trailing slash on the base URL
+#base_url = "/home/jieiku/.dev/abridge/public/" # used for locally usable build directly from disk, also set below extra.uglyurls = true
+title = "Abridge.css"
+description = "Abridge is a fast and lightweight Zola theme using semantic html, abridge.css class-light CSS, and No JS."
+default_language = "en"
+output_dir = "public"
+compile_sass = true
+build_search_index = false
+minify_html = false
+generate_feed = true
+feed_filename = "atom.xml"
+#ignored_content = ["*.{graphml,xlsx}", "temp.*"]
+#hard_link_static = false # set to true to hard link instead of copying, useful for very large files.
+taxonomies = [
+    {name = "categories", feed = true},
+    {name = "tags", feed = true},
+]
+
+#theme = "abridge"
+[markdown]
+extra_syntaxes_and_themes = ["highlight_themes"] # Abridge's config.toml
+# In YOUR SITE'S config.toml set to: ["highlight_themes", "themes/abridge/highlight_themes"]
+highlight_code = true
+#highlight_theme = "abridge-dark"
+highlight_theme = "css"
+
+# abridge-dark ayu-dark-abridge ayu_mirage-dark-abridge charcoal-dark-abridge dracula-dark-abridge material-dark-abridge
+# abridge-light ayu-light-abridge ayu_mirage-light-abridge charcoal-light-abridge dracula-light-abridge material-light-abridge
+# abridge-white ayu-white-abridge ayu_mirage-white-abridge charcoal-white-abridge dracula-white-abridge material-white-abridge
+
+# xx-abridge themes are a copy of themes xx with contrast/color tweaks for 100 score on google lighthouse https://learnui.design/tools/accessible-color-generator.html
+# https://www.getzola.org/documentation/content/syntax-highlighting/#inline-vs-classed-highlighting
+
+render_emoji = false
+external_links_target_blank = true # rel="noopener"
+external_links_no_follow = false   # rel="nofollow"
+external_links_no_referrer = false # rel="noreferrer"
+smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` etc
+
+[extra]
+uglyurls = false # if set to true then links are generated with the full path. eg https://abridge.netlify.app/index.html
+language_code = "en-US"
+title_separator = "|"  # Separator between title and title_addition, set as |, -, _, etc
+# To disable title_addition but keep built in page additions eg, Posts page: "Posts | Abridge" set title_addition to an empty string
+# To always set the page title exactly eg "Abridge" then comment out the below line (not recommend, bad for SEO)
+title_addition = "Fast & Lightweight Zola Theme" # a default value for title addition
+recent = false # TOC / index
+recent_items = 9
+author = "Jake G" # Put Your Name here
+
+title_size_index = "s85" # size: s95, s90, s85, s80, s75, s70, false(full size)
+meta_index = { position="bottom", size="s90", author=true, readtime=false, readstring="min", date=true, categories_tags=true, divider=false }
+meta_post = { position="top", size="s95", author=true, readtime=false, readstring="min read", date=true, categories_tags=true, divider=false }
+## position: top, bottom, both, false(hidden) ## size: s95, s90, s85, s80, s75, s70, false(full size)
+## divider:    "&middot;"    "&bull;"    " "
+
+footer_size = "s90" # size: s95, s90, s85, s80, s75, s70, false(full size)
+footer_credit = true
+#footer_credit_override = '<p class="s90">Powered by <a href="https://www.getzola.org/">Zola</a> &#38; <a href="https://github.com/Jieiku/abridge/">Abridge</a></p>'
+#uncomment one of the two lines, or neither, depending on which type of logo you want to use:
+#logo = { file="logo.svg", width="32", height="32", alt="Abridge", text="bridge" }
+#textlogo = '<font color="#f90">A</font>bridge'
+textlogo = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge.css'
+sitedesc = false # enables or disables the display of the site description below the logo.
+#copyright_start_year = 2019  # optional
+#copyright_end_year = 2020  # optional, recommend leaving unset, zola build will set this to current year by default
+headhr = false # show or hide horizontal rule below header
+foothr = true # show or hide horizontal rule above footer
+
+menu = [
+    {url = "/about/", name = "About", slash = true},
+    {url = "/posts/", name = "Posts", slash = true},
+    {url = "/categories/", name = "Categories", slash = true},
+    {url = "/tags/", name = "Tags", slash = true},
+]
+menu_footer = [
+    {url = "/about/", name = "About", slash = true},
+    {url = "/contact/", name = "Contact", slash = true},
+    {url = "/privacy/", name = "Privacy", slash = true},
+    {url = "/sitemap.xml", name = "Sitemap", slash = false},
+]
+
+# Security Headers should preferably be set by your webserver (Nginx, Apache) https://observatory.mozilla.org  https://csp-evaluator.withgoogle.com/
+# If you are unable to load your security headers with your webserver, this will load a couple of them as meta tags.
+# There are many other security related headers most of which can only be set by the webserver method.
+# Comment out either of these meta headers and they wont be used.
+
+#security_header_referrer = "strict-origin-when-cross-origin"
+
+#security_header_csp = "default-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; connect-src 'self'; form-action 'self'; script-src 'self'; img-src 'self' data: cdn.cloudflare.com; frame-src 'self' www.youtube-nocookie.com player.vimeo.com; media-src 'self' data: cdn.cloudflare.com www.youtube-nocookie.com player.vimeo.com; font-src 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.gstatic.com; style-src 'self' 'unsafe-inline' cdn.cloudflare.com cdn.jsdelivr.net fonts.googleapis.com;"
+
+#################
+# Resource Files
+#################
+js_search_index = "search_index.en.js" # Separate Always, generated each build
+js_prestyle = "prestyle.js"# Bundleable - used to preload: FontAwesome, Katex, external Google Fonts
+js_search = [ "elasticlunr.min.js", "search.js" ]# Bundleable
+
+########## Switcher ########## (comment this block out if NOT using switcher):
+#js_theme = "theme.min.js" # Separate Always, comment out if using -auto/-light/-dark stylesheet. (required for switcher)
+#js_themeButton = "theme_button.js"# Bundleable
+#js_bundle = "abridge-switcher.min.js"# Bundle JS File, comment out to disable (includes switcher)
+#stylesheets = [ "abridge-switcher.css" ] # Orange Automatic Dark/Light Theme based on browser/system preference with switcher
+#stylesheets = [ "abridge-blue-switcher.css" ] # Blue Automatic Night/Light Theme based on browser/system preference with switcher
+#stylesheets = [ "abridge-blueshade-switcher.css" ] # BlueShade Automatic Night/Light Theme based on browser/system preference with switcher
+
+########## No Switcher ##########
+#js_bundle = "search.min.js"# Bundle JS File, comment out to disable (search only: no switcher/prestyle)
+#js_bundle = "abridge.min.js"# Bundle JS File, comment out to disable (no switcher)
+#stylesheets = [ "abridge.css" ] # Orange Automatic Dark/Light Theme based on browser/system preference
+#stylesheets = [ "abridge-blue.css" ] # Blue Automatic Night/Light Theme based on browser/system preference
+#stylesheets = [ "abridge-blueshade.css" ] # BlueShade Automatic Night/Light Theme based on browser/system preference
+#stylesheets = [ "abridge-dark.css" ] # Orange Dark Theme
+#stylesheets = [ "abridge-light.css" ] # Orange Light Theme
+#stylesheets = [ "abridge-blue-dark.css" ] # Blue Dark Theme
+#stylesheets = [ "abridge-blue-light.css" ] # Blue Light Theme
+#stylesheets = [ "abridge-blueshade-dark.css" ] # BlueShade Dark Theme
+#stylesheets = [ "abridge-blueshade-light.css" ] # BlueShade Light Theme
+#stylesheets = [ "abridge.css", "extra.css" ] # example loading extra css
+stylesheets = [ "abridge.css", "syntax/syntax-abridge.css" ]
+
+
+# If you have js_bundle set, then Bundleable js files are ignored (it's assumed you bundled them).
+# You can include whatever js you want in your bundle. just generate your file like below and place in your sites root static directory:
+#               cd mysite/themes/abridge/static
+# search:       uglifyjs elasticlunr.min.js search.js -o search.min.js -c -m
+# noswitcher:   uglifyjs prestyle.js elasticlunr.min.js search.js -o abridge.min.js -c -m
+# ALL:          uglifyjs prestyle.js theme_button.js elasticlunr.min.js search.js -o abridge-switcher.min.js -c -m
+# theme:        uglifyjs theme.js -o theme.min.js -c -m
+# katex_bundle: uglifyjs katex.min.js mathtex-script-type.min.js auto-render.min.js katexoptions.js -o katexbundle.min.js -c -m
+
+banner = "banner.png" # Used as default image for OpenGraph/Twitter if page specific image is undefined.
+# favicons, comment out a line to disable loading some or all of these.
+favicon_theme_color = "#333333"
+favicon_ms_color = "#333333"
+favicon_webmanifest = "site.webmanifest" # Used for android-chrome-512x512.png and android-chrome-192x192.png
+favicon_mask = "safari-pinned-tab.svg" # safari-pinned-tab.svg
+favicon_mask_color = "#ff9900"
+favicon180 = "apple-touch-icon.png" # apple-touch-icon.png
+favicon32 = "favicon-32x32.png" # favicon-32x32.png
+favicon16 = "favicon-16x16.png" # favicon-16x16.png
+
+# Uncomment below line to load fontawesome, eg: <i class="fa-solid fa-heart"></i>
+#fontawesome = "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"
+#icon_read = "fa-solid fa-glasses" # displayed in metadata on index and below title on page.
+#icon_date = "fa-solid fa-calendar" # displayed in metadata on index and below title on page.
+#icon_info = "fa-solid fa-circle-info" # displayed in metadata on index and below title on page for categories/tags
+#icon_author = "fa-solid fa-pen-fancy" # displayed in metadata on index and below title on page.
+
+# For externally loaded Fonts, make sure to include the FULL url including the http/https prefix
+#fonts = [ {url = "https://fonts.googleapis.com/css?family=Montserrat:400,700,italic|Fira+Code:400,italic"} ]
+
+# Local fonts are defined in the css, defining them here only adds the preload tag to the head.
+# preload will eliminate Content Layout Shift, but will hurt with page load time. (not recommended)
+#fonts = [
+#    {url = "font/FiraCode.woff2"},
+#    {url = "font/Roboto.woff2"},
+#    {url = "font/Roboto-Italic.woff2"},
+#    {url = "font/Roboto-Bold.woff2"},
+#]
+
+math = false # katex math js library, used to to render mathematical notations, requires javascript
+math_auto_render = false
+
+#katex_css = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css" # Fonts - use remote fonts
+#katex_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"
+#katex_autorender_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"
+#mathtex_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/mathtex-script-type.min.js"
+
+katex_css = "katex.min.css" # Fonts - to load the css locally, you also need to have all the fonts.
+katex_js = "katex.min.js" # use local js, so that we dont have to whitelist cdn.jsdelivr.net for script src in CSP
+mathtex_js = "mathtex-script-type.min.js" # use local js, so that we dont have to whitelist cdn.jsdelivr.net for script src in CSP
+katex_autorender_js = "auto-render.min.js"
+katex_options = "katexoptions.js"
+katex_bundle = "katexbundle.min.js"
+
+
+
+##########################
+# meta/seo/analytic tags
+##########################
+keywords = "Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" # used for the primary site index
+twitter = "your-user-name" # used for twitter related
+#google = "Your Google Site verification code."
+#bing = "Your Bing Site verification code."
+seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter
+
+# Footer social links; full options listed in macros/social.html
+[extra.social]
+feed = true
+mail = "name@example.com"
+mastodon = "@your-user-name"
+element = "matrix.example.com"
+#matrix = "matrix.example.com"
+buymeacoffee = "your-user-name"
+twitter = "your-user-name"
+facebook = "your-user-name"
+linkedin = "your-user-name"
+gitlab = "your-user-name"
+github = "your-user-name"
+github_sponsor = "your-user-name"
+bitbucket = "your-user-name"
+python = "your-user-name"
+docker = "your-user-name"
+stack = "your-user-name"
+instagram = "your-user-name"
+pinterest = "your-user-name"
+twitch = "your-user-name"
+youtube = "your-channel-id"
+researchgate = "your-profile-id"

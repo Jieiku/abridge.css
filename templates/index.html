@@ -1,0 +1,67 @@
+{%- extends "base.html" %}
+
+{%- block seo %}
+  {{- super() }}
+
+  {%- if config.title %}
+    {%- set title = config.title %}
+  {%- else %}
+    {%- set title = "" %}
+  {%- endif %}
+
+  {%- if config.extra.title_addition and title %}
+    {%- set title_addition = title_separator ~ config.extra.title_addition %}
+  {%- elif config.extra.title_addition %}
+    {%- set title_addition = config.extra.title_addition %}
+  {%- else %}
+    {%- set title_addition = "" %}
+  {%- endif %}
+
+  {%- set description = config.description %}
+
+  {{- macros_head::seo(title=title, title_addition=title_addition, description=description, is_home=true) }}
+{%- endblock seo %}
+
+
+
+{%- block content %}
+    <div>
+    {%- for page in paginator.pages %}
+      <article>
+        {{- macros::title_index(page=page) }}
+        {%- if config.extra.meta_index.position %}
+        {%- if config.extra.meta_index.position == "top" or config.extra.meta_index.position == "both" %}
+        {{- macros::meta_index(page=page) }}
+        {%- endif %}{%- endif %}
+        <p class="sum">
+        {%- if page.summary %}
+          {{ page.summary | markdown(inline=true) | safe }}
+        {%- elif page.description %}
+          {{ page.description | safe }}
+        {%- elif page.content %}
+          {{ page.content | safe | striptags | truncate(length=150) }}
+        {%- elif page.extra.static_thumbnail %}
+        {%- endif %}
+          <a href="{{ page.permalink | safe }}{%- if config.extra.uglyurls %}index.html{%- endif %}">...more</a>
+        </p>
+        {%- if config.extra.meta_index.position %}
+        {%- if config.extra.meta_index.position == "bottom" or config.extra.meta_index.position == "both" %}
+        {{- macros::meta_index(page=page) }}
+        {%- endif %}
+        {%- endif %}
+      </article>
+    {%- endfor %}
+    {{- macros::pagination(paginator=paginator) }}
+    </div>
+  {%- set section_item = get_section(path="_index.md") %}
+  {%- if config.extra.recent | default(value=true) %}
+    <div class="toc">
+      <div class="toc-sticky">
+        <h1><span class="s75">Recent Posts</span></h1>
+        {%- for page in section_item.pages | slice(end=config.extra.recent_items) %}
+          {{- page_macros::page_listing(page=page) }}
+        {%- endfor %}
+      </div>
+    </div>
+  {%- endif %}
+{%- endblock content %}

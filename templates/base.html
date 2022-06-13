@@ -1,0 +1,119 @@
+{%- import 'macros/head.html' as macros_head %}
+{%- import "macros/social.html" as social_macros %}
+{%- import "macros/page.html" as page_macros %}
+{%- import "macros/macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="{{ config.extra.language_code | default(value='en-US') }}">
+<head>
+  {{- macros_head::theme() }}
+  {{- macros_head::stylesheets() }}
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  {{- macros_head::stylesheets_preload() }}
+  {{- macros_head::js() }}
+  {{- macros_head::feed() }}
+  {%- block seo %}
+    {%- if config.extra.title_separator %}
+      {%- set title_separator = " " ~ config.extra.title_separator ~ " " -%}
+    {%- else %}
+      {%- set title_separator = " | " -%}
+    {%- endif %}
+  {%- endblock seo %}
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  {{- macros_head::security() }}
+  {{- macros_head::favicons() }}
+  {%- if config.build_search_index %}
+  <noscript><link rel="stylesheet" href="{{ get_url(path='nojs.css', trailing_slash=false) | safe }}" /></noscript>
+  {%- endif %}
+</head>
+<body>
+{%- block header %}
+  <header>
+    <nav>
+      <div>
+        {%- if config.extra.logo %}
+        <h1><a href="{{ config.base_url | safe }}/{%- if config.extra.uglyurls %}index.html{%- endif %}">{%- if config.extra.logo.file %}<img src="{{ config.base_url | safe }}/{{ config.extra.logo.file | safe }}"{%- if config.extra.logo.alt %} alt="{{ config.extra.logo.alt | safe }}"{%- endif %}{%- if config.extra.logo.width %} width="{{ config.extra.logo.width | safe }}"{%- endif %}{%- if config.extra.logo.height %} height="{{ config.extra.logo.height | safe }}"{%- endif %} />{%- endif %}{%- if config.extra.logo.text %}{{ config.extra.logo.text | safe }}{%- endif %}</a></h1>
+        {%- elif config.extra.textlogo %}
+        <h1><a href="{{ config.base_url | safe }}/{%- if config.extra.uglyurls %}index.html{%- endif %}">{{ config.extra.textlogo | safe }}</a></h1>
+        {%- elif config.title %}
+        <h1><a href="{{ config.base_url | safe }}/{%- if config.extra.uglyurls %}index.html{%- endif %}">{{ config.title | safe }}</a></h1>
+        {%- endif %}
+      </div>
+      <div>
+        <ul>
+          {%- for i in config.extra.menu %}
+          <li><h2><a href="{{ get_url(path=i.url, trailing_slash=i.slash) }}{%- if i.slash and config.extra.uglyurls %}index.html{%- endif %}">{{ i.name | safe }}</a></h2> </li>
+          {%- endfor %}
+          {%- if config.extra.js_theme %}
+          <li class="js">{%- if config.extra.fontawesome %}<i type="reset" id="mode" class="svgs fa-a fa-solid fa-circle-half-stroke"></i>{%- else %}<i type="reset" id="mode" class="svgh svgs contrast"></i>{%- endif %}
+          {%- endif %}
+          </li>
+        </ul>
+      </div>
+      {%- if config.build_search_index %}
+      <div>
+        <form class="js" name="goSearch">
+          <div class="searchd">
+            <input id="userinput" type="text" placeholder="Search" autocomplete="off" />
+            <button type="submit" title="Search">{%- if config.extra.fontawesome %}<i class="svgs fa-solid fa-magnifying-glass"></i>{%- else %}<i class="svgs search"></i>{%- endif %}</button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+      {%- endif %}
+    </nav>
+    {%- if config.extra.sitedesc %}
+    {%- if config.description %}
+    <div>{{ config.description }}</div>
+    {%- endif %}
+    {%- endif %}
+    {%- if config.extra.headhr %}
+    <hr />
+    {%- endif %}
+  </header>
+{%- endblock header %}
+  <main>
+  {%- block content %}
+  {%- endblock content %}
+  </main>
+{%- block footer %}
+  <footer>
+    {%- if config.extra.foothr %}
+    <hr />
+    {%- endif %}
+    <div class="c">
+      <p>
+        {{- social_macros::social_links(social_config=config.extra.social) }}
+      </p>
+
+      {#- Copyright START #}
+      {%- set copyright_start_year=config.extra.copyright_start_year | default(value="") %}
+      {%- if copyright_start_year %}{%- set copyright_start_year=copyright_start_year ~ "-" %}{%- endif %}
+      {%- set copyright_end_year=config.extra.copyright_end_year | default(value=now() | date(format="%Y")) %}
+      <p{%- if config.extra.footer_size %} class="{{ config.extra.footer_size }}"{% endif %}>Copyright &copy; {{ copyright_start_year ~ copyright_end_year }} {{ config.title }}</p>
+      {#- Copyright END #}
+      <p{%- if config.extra.footer_size %} class="{{ config.extra.footer_size }}"{% endif %}>
+        {%- for i in config.extra.menu_footer %}
+        <a href="{{ get_url(path=i.url, trailing_slash=i.slash) }}{%- if i.slash and config.extra.uglyurls %}index.html{%- endif %}">{{ i.name | safe }}</a> &nbsp;
+        {%- endfor %}
+      </p>
+
+
+      {%- if config.extra.footer_credit | default(value=true) %}
+      {%- if config.extra.footer_credit_override %}
+      {{ config.extra.footer_credit_override | safe }}
+      {%- else %}
+      <p{%- if config.extra.footer_size %} class="{{ config.extra.footer_size }}"{% endif %}>Powered by <a href="https://www.getzola.org/">Zola</a> and <a href="https://github.com/jieiku/abridge/">Abridge</a></p>
+      {%- endif %}
+      {%- endif %}
+    </div>
+  </footer>
+{%- endblock footer %}
+{%- block gotop %}
+{%- endblock gotop %}
+</body>
+</html>

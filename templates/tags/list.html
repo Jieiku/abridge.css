@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{%- block seo %}
+  {{- super() }}
+  {%- set title = "Tags" %}
+
+  {%- if config.title %}
+    {%- set title_addition = title_separator ~ config.title %}
+  {%- else %}
+    {%- set title_addition = "" %}
+  {%- endif %}
+
+  {%- set description = config.description %}
+
+  {{- macros_head::seo(title=title, title_addition=title_addition, description=description, is_home=true) }}
+{%- endblock seo %}
+
+{%- block content %}
+    <div>
+      <div class="c">
+        <h1>{{ terms | length }} Tags</h1>
+        <p>{% for term in terms %} #<a href="#{{ term.name }}">{{ term.name }}</a> {% endfor %}</p>
+      </div>
+      {%- for term in terms %}
+      <h2 id="{{ term.name }}">#<a href="{{ term.permalink | safe }}">{{ term.name }}</a></h2>
+      {%- for page in term.pages %}
+      <p><a href="{{ page.permalink | safe }}">{{ page.title }}</a> - <time datetime="{{ page.date }}">{{ page.date | date(format="%F") }}</time></p>
+      {%- endfor %}
+      {%- endfor %}
+    </div>
+{%- endblock content %}
