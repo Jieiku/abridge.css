@@ -8,7 +8,7 @@
 .hpad {padding: 0 .2rem}
 .rpad {padding-right: .2rem}
 pre code[data-lang]::before {
-    content: attr(data-lang) ': ' "
+    content: ' ' attr(data-lang) ': ' "
 ";
 	color: var(--a1);
 }
