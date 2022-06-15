@@ -11,9 +11,9 @@ function ccb(highlightDiv) {
   );
 
   // addCopyButtonToDom
-  highlightDiv.insertBefore(button, highlightDiv.firstChild);
   const wrapper = document.createElement("div");
-  wrapper.className = "highlight-wrapper";
+  wrapper.className = "ccw";
+  wrapper.appendChild(button);
   highlightDiv.parentNode.insertBefore(wrapper, highlightDiv);
   wrapper.appendChild(highlightDiv);
 }

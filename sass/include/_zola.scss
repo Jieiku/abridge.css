@@ -12,7 +12,14 @@ pre code[data-lang]::before {
 ";
 	color: var(--a1);
 }
+// code copy wrapper
+.ccw {
+  position: relative;
+}
+// code copy button
 .cc {
   z-index: 9;
-  float: right;
+  position: absolute;
+  right: 0px;
+  font-size: .8rem;
 }
