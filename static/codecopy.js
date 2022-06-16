@@ -28,7 +28,7 @@ async function ccc(button, highlightDiv) {
     const items = highlightDiv.querySelectorAll(":last-child > tr > td:last-child");
     items.forEach(item => {
       codeToCopy = codeToCopy + item.innerText;
-      console.log(codeToCopy);
+      //console.log(codeToCopy);
     });
   } else {
     codeToCopy = highlightDiv.querySelector(":last-child > code").innerText;
