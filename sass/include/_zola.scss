@@ -23,3 +23,33 @@ pre code[data-lang]::before {
   right: 0px;
   font-size: .8rem;
 }
+
+// Mark Override, this is used for Zola's linenos and hl_lines
+:root:not(.light) code table {
+  mark {
+    filter: brightness(120%);
+  }
+}
+// Table Override, this is used for Zola's linenos and hl_lines
+code table {
+  font-size: .8rem;
+  td, th, tr {
+    padding: 0;
+    border-bottom: none;
+  }
+  tbody tr td:first-child {
+    text-align: center;
+    user-select: none;
+    min-width: 60px;
+  }
+  tbody tr:nth-child(even), thead tr {
+    background-color: unset;
+  }
+  // Highlighted text
+  mark {
+    display: block;
+    background-color: var(--c2);
+    color: unset;
+    padding: 0;
+  }
+}
