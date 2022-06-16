@@ -128,9 +128,9 @@ See [the docs](https://www.getzola.org/documentation/content/syntax-highlighting
 </html>
 ```
 
-## Line Numbers, Highlighting
 
-```html,hl_lines=5 7-9
+
+```html
 <!doctype html>
 <html lang="en">
 <head>
