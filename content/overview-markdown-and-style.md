@@ -130,7 +130,7 @@ See [the docs](https://www.getzola.org/documentation/content/syntax-highlighting
 
 ## Line Numbers, Highlighting
 
-```html,linenos,hl_lines=5 7-9
+```html,hl_lines=5 7-9
 <!doctype html>
 <html lang="en">
 <head>

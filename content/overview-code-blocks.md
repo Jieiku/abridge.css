@@ -24,7 +24,7 @@ See [the docs](https://www.getzola.org/documentation/content/syntax-highlighting
 If we want, we can also `specify inline code` which is useful for `the small stuff`.
 
 ### rust
-```rust,linenos,hl_lines=3
+```rust
 //! jelly-actix-web-starter - A starter template for actix-web projects that feels very Django-esque. Avoid the boring stuff and move faster.
 
 use jelly::actix_web;
@@ -40,7 +40,7 @@ let context = Context::new();
 ```
 
 ### TOML
-```toml,linenos,hl_lines=3
+```toml
 base_url = "https://abridge.netlify.app/"
 title = "Abridge"
 description = "Abridge is a fast and lightweight Zola theme using semantic html, abridge.css class-light CSS, and No Mandatory JS."
