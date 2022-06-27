@@ -98,7 +98,7 @@ integrity = true # setting this to false is useful for developing, should normal
 js_search_index = "search_index.en.js" # Separate Always, generated each build
 js_prestyle = "prestyle.js"# Bundleable - used to preload: FontAwesome, Katex, external Google Fonts
 js_search = [ "elasticlunr.min.js", "search.js" ]# Bundleable
-js_codecopy = "codecopy.js"# Bundleable
+#js_codecopy = "codecopy.js"# Bundleable
 
 ########## Switcher ########## (comment this block out if NOT using switcher):
 #js_theme = "theme.min.js" # Separate Always, comment out if using -auto/-light/-dark stylesheet. (required for switcher)
