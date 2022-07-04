@@ -55,7 +55,7 @@
     {%- set toc = page.toc %}
     {%- endif %}
     {%- if toc %}
-    <div class="toc">
+    <div class="toc" aria-hidden="true">
       <div class="toc-sticky">
         <h3>Index</h3>
         {%- for h in toc %}
@@ -82,7 +82,7 @@
 {%- if page.reading_time %}
 {%- if page.reading_time > 1 %}
 <span class="topout">
-<span class="topleft"> </span><a href="#" class="top">{%- if config.extra.icon_top %}<i class="{{ config.extra.icon_top }}"></i>{%- else %}&cuwed;{%- endif %}</a>
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top">{%- if config.extra.icon_top %}<i class="{{ config.extra.icon_top }}"></i>{%- else %}&cuwed;{%- endif %}</a>
 </span>
 {%- endif %}
 {%- endif %}
