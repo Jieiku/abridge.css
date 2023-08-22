@@ -1,0 +1,32 @@
+{
+  "name": "abridge.css",
+  "version": "0.4.1",
+  "description": "A classless CSS library",
+  "main": "dist/abridge.min.css",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jieiku/abridge.css.git"
+  },
+  "keywords": [
+    "css",
+    "html",
+    "sanitize",
+    "normalize",
+    "semantic",
+    "style"
+  ],
+  "author": "Jake G <106644+Jieiku@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jieiku/abridge.css/issues"
+  },
+  "homepage": "https://github.com/Jieiku/abridge.css",
+  "scripts": {
+    "main": "sass --no-source-map --style compressed sass/abridge.scss dist/abridge.min.css",
+    "start": "yarn main"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1",
+    "sass": "^1.66.1"
+  }
+}
