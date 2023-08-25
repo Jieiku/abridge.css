@@ -5,11 +5,11 @@
   /// Enable a centered viewport for <header>, <main>, <footer> inside <body>
   /// Fluid layout until a defined size, then becomes centered viewport.
   //$enable-maxwidth: true,
-  $mw: 60%,// max-width
+  $mw: 70%,// max-width
   //$mb: 1200px,// value at which to switch from fluid layout to max-width
 
-  $abridgeMode: "dark",//valid values: switcher, auto, dark, light
-  $syntax-mode: "dark",// Force syntax mode: auto, dark, light
+  $abridgeMode: "switcher",//valid values: switcher, auto, dark, light
+  $syntax-mode: "auto",// Force syntax mode: auto, dark, light
   $switcherDefault: "dark",// default nojs switcher mode: dark, light (make sure to also set js_switcher_default in config.toml)
 
   $color: "orange",// color template to use/override: orange, blue, blueshade
@@ -20,7 +20,7 @@
   $enable-icons: false,// false disables ALL icons
   $ic: true,// true for colorized icons, otherwise #888 is used.
 
-  $icon-rss: false,
+  $icon-rss: true,
   $icon-mail: false,// e-mail
   $icon-mastodon: false,
   $icon-element: false,
@@ -45,9 +45,9 @@
   $icon-youtube: false,
   $icon-researchgate: false,
 
-  $icon-x: false,// x symbol, used to close search results page.
-  $icon-search: false,//search, spyglass search button in search box.
-  $icon-adjust: false,//theme switcher dark/light toggle button.
+  //$icon-x: true,// x symbol, used to close search results page.
+  //$icon-search: true,//search, spyglass search button in search box.
+  //$icon-adjust: true,//theme switcher dark/light toggle button.
   //$icon-angll: true,//pagination, goto first page
   //$icon-angl: true,//pagination, goto previous page
   //$icon-angr: true,//pagination, goto next page
@@ -124,14 +124,23 @@
   //$ha: 92%,// mark/highlight line
 
   /// These lines find the spot at which to insert your appended fonts.
-  //$findFont-Main: "Segoe UI",     // ← append custom MAIN font(s) AFTER this
-  //$findFont-Code: "Segoe UI Mono",// ← append custom CODE font(s) AFTER this
+  //$findFont-Main: "Segoe UI",     // ← APPEND custom MAIN font(s) AFTER this
+  //$findFont-Code: "Segoe UI Mono",// ← APPEND custom CODE font(s) AFTER this
+
+  /// If you want to prepend the font list, then use null instead:
+  $findFont-Main: null,         // ← PREPEND custom MAIN font(s)
+  //$findFont-Code: null,         // ← PREPEND custom CODE font(s)
 
   /// These lines specify the fonts to add.
-  //$fontExt-Main: (ExampleFont1, "Example Font 2"),// MAIN font(s) to add
+  $fontExt-Main: (Arimo),// MAIN font(s) to add
   //$fontExt-Code: (ExampleCode1, "Example Code 2"),// CODE font(s) to add
 
-  /// If prepending/appending fonts above, then no need to change them below
+  /// If relying on installed fonts alone, then the above is all you need, if the visiting system has the intended font installed then it will use it!
+  /// However, if you want to load the Font File resource to ensure it is loaded if they do not have it, then use @use at the VERY Bottom of this file.
+  /// For a Sans based system font stack, I measured the least Cumulative Layout Shift with: Roboto, Lato, Arimo
+
+  /// If prepending/appending fonts above, then no need to change them with the 2 below lines.
+  /// The following 2 below lines give a way to hard code a font list if you prefer.
   //$font: Roboto system-ui -apple-system BlinkMacSystemFont "Segoe UI" Oxygen Ubuntu Cantarell "Fira Sans" "Droid Sans" "Helvetica Neue" "Noto Sans" Helvetica Arial sans-serif,
   //$font-mono: ui-monospace Menlo Monaco Consolas "SF Mono" "Cascadia Mono" "Segoe UI Mono" "DejaVu Sans Mono" "Liberation Mono" "Roboto Mono" "Oxygen Mono" "Ubuntu Monospace" "Ubuntu Mono" "Source Code Pro" "Fira Mono" "Droid Sans Mono" "Courier New" Courier monospace,
 
@@ -176,6 +185,15 @@
   $toc: false,//Table of Contents, page index / recent posts block
   //$modifiers: true,//tiny modifier classes for sizing and spacing
   //$misc: false,
-  $grid: false,//Infinity Grid, column based layouts.
+  //$grid: false,//Infinity Grid, column based layouts.
   //$syntax: true,//syntax highlighting for code blocks
 );
+/******************************************************************************
+ *   FONTS - Abridge by default uses the System Font Stack
+ *     https://css-tricks.com/snippets/css/system-font-stack/
+ *   However if you need you can load a specific font below,
+ *     make sure to have the relevant woff2 fonts in your static/fonts folder
+ *   I measured the least Cumulative Layout Shift with: Roboto, Lato, Arimo
+ *****************************************************************************/
+//@use "fonts/Roboto";
+//@use "fonts/Arimo";

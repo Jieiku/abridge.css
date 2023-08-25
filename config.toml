@@ -13,7 +13,7 @@ minify_html = false
 build_search_index = false
 generate_feed = true
 taxonomies = [
-    {name = "categories", feed = true},
+#    {name = "categories", feed = true},
     {name = "tags", feed = true},
 ]
 
@@ -63,7 +63,7 @@ flag.fr = "🇫🇷"
 menu = [
     {url = "about", name = "About", slash = true, blank = false},
     {url = "archive", name = "Posts", slash = true, blank = false},
-    {url = "categories", name = "Categories", slash = true, blank = false},
+#    {url = "categories", name = "Categories", slash = true, blank = false},
     {url = "tags", name = "Tags", slash = true, blank = false},
 ]
 menu_footer = [
@@ -74,7 +74,7 @@ menu_footer = [
 ]
 
 recent = false # TOC / index
-recent_items = 9
+recent_items = 12
 
 meta_index = { position="bottom", size="s90", author=false, readtime=false, readstring="min", date=true, updated=false, categories_tags=true, divider=" " }
 meta_post = { position="top", size="s95", author=true, readtime=false, readstring="min read", date=true, updated=true, categories_tags=true, divider=" " }
@@ -126,7 +126,6 @@ seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twit
 ###############################################################################
 
 feed = false # this adds the RSS feed icon in the footer.
-#mail_encode = true # This obfuscates your email address, javascript is used to decode it at page load.
 #mail = "name@example.com"
 #mastodon = "@your-user-name"
 #element = "matrix.example.com"
@@ -169,23 +168,15 @@ feed = false # this adds the RSS feed icon in the footer.
 
 uglyurls = false # if set to true then links are generated with the full path. eg https://abridge.netlify.app/index.html
 integrity = true # increases site security, should normally be true. (setting to false is useful during js development)
-
 js_bundle = true # multiple javascript files combined into a single file (setting to false is useful during js development)
-js_switcher = false # The button that allows manually changing between light/dark mode.
-js_switcher_default = "dark" # default nojs switcher mode: dark, light (make sure to also set $switcherDefault in abridge.scss)
 
 js_copycode = true # The copy button on code blocks that allows you to copy them to the clipboard.
+js_email_encode = true # obfuscates email address in footer
+js_prestyle = true # used to preload: FontAwesome, Katex, external Google Fonts
+js_switcher = true # The button that allows manually changing between light/dark mode.
+js_switcher_default = "dark" # default nojs switcher mode: dark, light (make sure to also set $switcherDefault in abridge.scss)
 
-search_library = false
-
-#js_search_index = "search_index.en.json" # Separate Always, generated each build
-#js_theme = "js/theme.min.js" # Separate Always, comment out if using -auto/-light/-dark stylesheet. (required for switcher)
-#js_themeButton = "js/theme_button.js"# Bundleable - light/dark switcher button
-#js_prestyle = "js/prestyle.js"# Bundleable - used to preload: FontAwesome, Katex, external Google Fonts
-#js_codecopy = "js/codecopy.js"# Bundleable - copy code block to clipboard button
-#js_email = "js/email.js"# Bundleable - obfuscates email address in footer
-#js_swload = "js/sw_load.min.js" # loads the PWA service worker
-
+search_library = 'elasticlunr'
 stylesheets = ["abridge.css"]
 
 pwa = false # true to load the service worker
@@ -259,28 +250,29 @@ icon_top = false
 
 
 ###############################################################################
-### FONTS
-### Abridge by default uses the System Font Stack:
+### FONTS - Abridge by default uses the System Font Stack
 ###   https://css-tricks.com/snippets/css/system-font-stack/
-### The System Font Stack offers the best performance, but if you need you can load a specific font.
+### However if you need you can load a specific font below,
+###   make sure to have the relevant woff2 fonts in your static/fonts folder
+### I measured the least Cumulative Layout Shift with: Roboto, Lato, Arimo
 ###############################################################################
 
 ### For externally loaded Fonts, make sure to include the FULL url including the https prefix:
 
 #fonts = [ {url = "https://fonts.googleapis.com/css?family=Roboto:400,700,italic|Roboto+Mono:400,italic"} ]
 
-### Local fonts are defined in the css, https://github.com/Jieiku/abridge/blob/master/sass/fonts/_Roboto.scss
-### To import one include in the imports file: https://github.com/Jieiku/abridge/blob/master/sass/_imports.scss
+### Local fonts are defined in the css, https://github.com/Jieiku/abridge/tree/master/COPY-TO-ROOT-SASS/fonts/_Arimo.scss
+### To load a local font resource, look at the bottom of this file: https://github.com/Jieiku/abridge/blob/master/COPY-TO-ROOT-SASS/abridge.scss
 
-### After importing them in the CSS, You can also define them below and it will add the preload tag to the head.
+### After loading them in the CSS, You can also define them below and it will add the preload tag to the head.
 ### preloading fonts will eliminate Content Layout Shift, but will hurt with page load time. (not recommended)
 
 #fonts = [
-#    {url = "font/Roboto-Mono.woff2"},
-#    {url = "font/Roboto-Mono-Italic.woff2"},
-#    {url = "font/Roboto.woff2"},
-#    {url = "font/Roboto-Italic.woff2"},
-#    {url = "font/Roboto-Bold.woff2"},
+#    {url = "fonts/Roboto-Mono.woff2"},
+#    {url = "fonts/Roboto-Mono-Italic.woff2"},
+#    {url = "fonts/Roboto.woff2"},
+#    {url = "fonts/Roboto-Italic.woff2"},
+#    {url = "fonts/Roboto-Bold.woff2"},
 #]
 
 
