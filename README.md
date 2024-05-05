@@ -11,7 +11,7 @@ Maintainence of this project is made possible by all the <a href="https://github
 
 ---
 
-**[View demo](https://abridgecss.netlify.app/)**
+**[View demo](https://abridge-css.pages.dev/)**
 
 </div>
 

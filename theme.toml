@@ -2,11 +2,12 @@ name = "abridge.css"
 description = "lightweight semantic html CSS Framework."
 license = "MIT"
 homepage = "https://github.com/Jieiku/abridge.css/"
-min_version = "0.17.2"
-demo = "https://abridgecss.netlify.app/"
+min_version = "0.18.0"
+demo = "https://abridge-css.pages.dev/"
 
-[extra]
-
+# Abridge.css author info
 [author]
 name = "Jake G (jieiku)"
 homepage = "https://github.com/jieiku/"
+
+[extra]

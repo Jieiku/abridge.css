@@ -1,13 +1,14 @@
 # do NOT include a trailing slash on the base URL
 base_url = "https://abridgecss.netlify.app"
-
-#base_url = "/home/jieiku/.dev/abridge/public" # Usable site directly from disk, Including Search!
-# Also set index_format = "elasticlunr_javascript", and in [extra] uglyurls = true, integrity = false, js_bundle = false
+# Usable site directly from disk, Including Search: "/home/jieiku/.dev/abridge/public"
+# Also set index format = "elasticlunr_javascript", and in [extra] uglyurls = true, integrity = false
+# If you use the npm/node script then all you have to do is set offline = true, and everything else is automatic.
 
 title = "Abridge.css"
 description = "Abridge.css is a fast, lightweight, class-light, semantic html CSS Framework."
-default_language = "en"
+theme = "abridge"
 
+default_language = "en"
 compile_sass = true
 minify_html = false
 build_search_index = false
@@ -22,10 +23,9 @@ taxonomies = [
 #ignored_content = ["*.{graphml,xlsx}", "temp.*"]
 #hard_link_static = false # set to true to hard link instead of copying, useful for very large files.
 
-theme = "abridge"
-
 [search]                # Options specific to elasticlunr search.
-index_format = "elasticlunr_json" # elasticlunr_json, elasticlunr_javascript
+# index format can be: elasticlunr_json or elasticlunr_javascript
+index_format = "elasticlunr_json"
 include_title = true        # include title of page/section in index
 include_description = true # include description of page/section in index
 include_content = true      # include rendered content of page/section in index
@@ -42,29 +42,18 @@ smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` 
 
 [extra]
 ###############################################################################
-### Language
-### https://www.w3schools.com/tags/ref_country_codes.asp
-### https://tera.netlify.app/docs#date
-###############################################################################
-date_locale = "en_US"
-language_code = "en-US"
-flag.en = "🇬🇧"
-flag.fr = "🇫🇷"
-#flag.es = "🇪🇸"
-
-
-###############################################################################
 ### Layout & Format
 ### position: top, bottom, both, false(hidden)
-### size: s95, s90, s85, s80, s75, s70, false(full size)
+### size: s150, s140, s130, s120, s110, s95, s90, s85, s80, s75, s70, false(full size)
 ### divider:    " "        "&middot;"        "&bull;"
 ###############################################################################
 
 menu = [
-    {url = "about", name = "About", slash = true, blank = false},
-    {url = "archive", name = "Posts", slash = true, blank = false},
-#    {url = "categories", name = "Categories", slash = true, blank = false},
-    {url = "tags", name = "Tags", slash = true, blank = false},
+#    {url = "blog", name = "Blog", slash = true, blank = false, size="s110"},
+    {url = "about", name = "About", slash = true, blank = false, size="s110"},
+    {url = "archive", name = "Posts", slash = true, blank = false, size="s110"},
+#    {url = "categories", name = "Categories", slash = true, blank = false, size="s110"},
+    {url = "tags", name = "Tags", slash = true, blank = false, size="s110"},
 ]
 menu_footer = [
     {url = "about", name = "About", slash = true, blank = false},
@@ -73,16 +62,20 @@ menu_footer = [
     {url = "sitemap.xml", name = "Sitemap", slash = false, blank = true},
 ]
 
+toc = false
 recent = false # TOC / index
-recent_items = 12
+recent_items = 15
+series = true
+series_items = 9 # Max number of items to display in series list, use 0 to disable
+#Series_parts = "$NUMBER_OF_PARTS part Series"
 
 meta_index = { position="bottom", size="s90", author=false, readtime=false, readstring="min", date=true, updated=false, categories_tags=true, divider=" " }
 meta_post = { position="top", size="s95", author=true, readtime=false, readstring="min read", date=true, updated=true, categories_tags=true, divider=" " }
 
 hide_section_dates = false # hides the date for sections that use posts.html as their template.
 hide_page_nextprev_titles = false # hides the next/previous titles for pages that use page.html as their template.
-title_size_index = "s85" # size: s95, s90, s85, s80, s75, s70, false(full size)
-footer_size = "s90" # size: s95, s90, s85, s80, s75, s70, false(full size)
+title_size_index = "s85"
+footer_size = "s90"
 footer_credit = true
 #footer_credit_override = '<p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> &#38; <a href="https://github.com/Jieiku/abridge/" target="_blank">Abridge</a></p>'
 #archive_reverse = true # Set to True to sort posts chronologically per year instead of newest first on the archive page: example.com/archive/
@@ -90,7 +83,7 @@ footer_credit = true
 ### Uncomment one of the below lines, or neither, depending on which type of logo you want to use:
 #logo = { file="logo.svg", width="32", height="32", alt="Abridge", text="bridge" }
 #textlogo = '<font color="#f90">A</font>bridge'
-textlogo = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge.css'
+textlogo = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="28" height="28"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge.css'
 
 sitedesc = false # enables or disables the display of the site description below the logo.
 headhr = false # show or hide horizontal rule below header
@@ -144,6 +137,7 @@ feed = false # this adds the RSS feed icon in the footer.
 #docker = "your-user-name"
 #stack = "your-user-name"
 #instagram = "your-user-name"
+#pixelfed = "@your-user-name" # Heaviest icon, off by default
 #pinterest = "your-user-name"
 #twitch = "your-user-name"
 #youtube = "channel/your-channel-id"
@@ -163,8 +157,25 @@ feed = false # this adds the RSS feed icon in the footer.
 ### Resource Files
 ### You can load extra css files if you need to, just separate by comma:
 ### stylesheets = [ "abridge.css", "extra.css" ]
-### search_library: library to use, valid values: false, "elasticlunr", "tinysearch", "stork"
+### search_library, library to use. valid values:
+###   false, "elasticlunr", "tinysearch", "stork"
+### offline: implies uglyurls=true and integrity=false, when true NPM/node will
+###   automatically set the path for the base_url, it will build the site,
+###   then set the base_url back to what it was. This is a way to build a completely
+###   offline site, a feature not possible with Zola alone.
+###   The PWA feature is another way to build an offline site, so there are now two
+###   different ways to build an offline site with Abridge.
+###
+### For most people the value of online_url will be the same as base_url.
+###   online_url is used to restore the base_url after generating an Offline site.
+###   When you set offline = true and run the npm script, the base_url is set to the absolute path on disk.
+###   Once you set offline = false, the base_url will be set back to the value of online_url when you run the npm script again.
 ###############################################################################
+
+# do NOT include a trailing slash on the online URL
+#online_url = "https://abridgecss.netlify.app"
+online_indexformat = "elasticlunr_json"# used to restore your preferred index format when offline = false
+offline = false # implies uglyurls=true and integrity=false, when true NPM/node will automatically set the path for the base_url, it will build the site, then set the base_url back to what it was.
 
 uglyurls = false # if set to true then links are generated with the full path. eg https://abridge.netlify.app/index.html
 integrity = true # increases site security, should normally be true. (setting to false is useful during js development)
@@ -179,8 +190,39 @@ js_switcher_default = "dark" # default nojs switcher mode: dark, light (make sur
 search_library = 'elasticlunr'
 stylesheets = ["abridge.css"]
 
-pwa = false # true to load the service worker
-webmanifest = "manifest.json" # Required for PWAs
+webmanifest = "manifest.min.json" # Required for PWAs
+
+###############################################################################
+### PWA (Progressive Web Application)
+### By default Abridge has pwa_NORM_TTL and pwa_LONG_TTL set to 0, this essential turns the PWA cache strategy into network first.
+###  Abridge uses cachebust hashing on js and css files, so anytime a page cache is updated, these resources would also get updated if changed.
+###  Media files rarely change, especially font files, so it is a good idea cache indefinitely.
+###  For pwa_TTL_EXEMPT indefinitely cached resources, you can force a new cache by incrementing the pwa_VER (cache version number).
+### If you would like to try a cache first strategy then set a value higher than 0 for pwa_NORM_TTL and pwa_LONG_TTL.
+###  The options below other than pwa=true, only come into play when the npm/node script is ran.
+###############################################################################
+
+pwa = true # true to load the service worker
+pwa_VER = '3.11.0' # Service Worker cache version. (increment if you need to force a new cache)
+
+### 3600=1hour, 28800=8hours, 86400=1day, 604800=1week, 1209600=2weeks
+pwa_NORM_TTL = 0 #  86400 is reasonable. html, json, xml, anything else undefined
+pwa_LONG_TTL = 0 # 604800 is reasonable.
+
+### list of files that overrides TTL_LONG/TTL_EXEMPT to be a NORM TTL.
+pwa_TTL_NORM = '"sw.min.js", "sw_load.min.js"'
+
+### TTL_LONG file extensions will be cached for the LONG_TTL duration.
+pwa_TTL_LONG = '"jpg", "jpeg", "png", "gif", "webp", "avif", "ico", "svg", "xsl", "txt"'
+
+### TTL_EXEMPT file extensions will be cached indefinitely unless sw_load version is incremented, which would invalidate any existing cache. (and a new cache would be started)
+pwa_TTL_EXEMPT = '"js", "css", "otf", "eot", "ttf", "woff", "woff2", "mp4", "webm", "mp3", "ogg"'
+
+### If set to true then the entire site is cached. (useful for making an entire site usable while offline)
+pwa_cache_all = true
+
+### List of Files for the PWA to initially Cache, used if pwa_cache_all = false
+pwa_BASE_CACHE_FILES = "'/js/theme.min.js','/js/theme_light.min.js','/abridge.css','/js/abridge.min.js','/','/404.html','/offline/','/manifest.min.json'"
 
 ###############################################################################
 ### Favicons, comment out a line to disable loading some or all of these if needed.
@@ -246,7 +288,7 @@ icon_top = false
 
 #security_header_referrer = "strict-origin-when-cross-origin"
 
-#security_header_csp = "default-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; connect-src 'self'; form-action 'self'; script-src 'self'; img-src 'self' data: cdn.cloudflare.com; frame-src 'self' www.youtube-nocookie.com player.vimeo.com; media-src 'self' data: cdn.cloudflare.com www.youtube-nocookie.com player.vimeo.com; font-src 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.gstatic.com; style-src 'self' 'unsafe-inline' cdn.cloudflare.com cdn.jsdelivr.net fonts.googleapis.com;"
+#security_header_csp = "default-src 'none'; object-src 'none'; base-uri 'self'; manifest-src 'self'; connect-src 'self'; form-action 'self'; script-src 'self'; img-src 'self' data: cdn.cloudflare.com; frame-src 'self' www.youtube-nocookie.com player.vimeo.com; media-src 'self' data: cdn.cloudflare.com www.youtube-nocookie.com player.vimeo.com; font-src 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.gstatic.com; style-src 'self' cdn.cloudflare.com cdn.jsdelivr.net fonts.googleapis.com;"
 
 
 ###############################################################################
