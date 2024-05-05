@@ -7,7 +7,7 @@ Abridge.css is a CSS library for semantic html, it adds a nice default style for
 
 Maintainence of this project is made possible by all the <a href="https://github.com/Jieiku/abridge.css/graphs/contributors">contributors</a> and <a href="https://github.com/sponsors/Jieiku">sponsors</a>. If you'd like to sponsor this project and have your avatar or company logo appear below <a href="https://github.com/sponsors/Jieiku">click here</a>. 💖
 
-<!-- sponsors --><!-- sponsors -->
+<!-- sponsors --><a href="https://github.com/yugfletcher"><img src="https://github.com/yugfletcher.png" width="60px" alt="" /></a><a href="https://github.com/samueloph"><img src="https://github.com/samueloph.png" width="60px" alt="Samuel Henrique" /></a><!-- sponsors -->
 
 ---
 
