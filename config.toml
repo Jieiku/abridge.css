@@ -12,7 +12,7 @@ default_language = "en"
 compile_sass = true
 minify_html = false
 build_search_index = false
-generate_feed = true
+generate_feeds = true
 taxonomies = [
 #    {name = "categories", feed = true},
     {name = "tags", feed = true},
@@ -24,7 +24,7 @@ taxonomies = [
 #hard_link_static = false # set to true to hard link instead of copying, useful for very large files.
 
 [search]                # Options specific to elasticlunr search.
-# index format can be: elasticlunr_json or elasticlunr_javascript
+# index format can be: elasticlunr_json or elasticlunr_javascript or fuse_json
 index_format = "elasticlunr_json"
 include_title = true        # include title of page/section in index
 include_description = true # include description of page/section in index
@@ -50,16 +50,16 @@ smart_punctuation = false          # `...` to `…`, `"quote"` to `“curly”` 
 
 menu = [
 #    {url = "blog", name = "Blog", slash = true, blank = false, size="s110"},
-    {url = "about", name = "About", slash = true, blank = false, size="s110"},
+#    {url = "about", name = "About", slash = true, blank = false, size="s110"},
     {url = "archive", name = "Posts", slash = true, blank = false, size="s110"},
 #    {url = "categories", name = "Categories", slash = true, blank = false, size="s110"},
     {url = "tags", name = "Tags", slash = true, blank = false, size="s110"},
 ]
 menu_footer = [
-    {url = "about", name = "About", slash = true, blank = false},
-    {url = "contact", name = "Contact", slash = true, blank = false},
-    {url = "privacy", name = "Privacy", slash = true, blank = false},
-    {url = "sitemap.xml", name = "Sitemap", slash = false, blank = true},
+    {url = "about", name = "About", slash = true, blank = false, size="s90"},
+    {url = "contact", name = "Contact", slash = true, blank = false, size="s90"},
+    {url = "privacy", name = "Privacy", slash = true, blank = false, size="s90"},
+    {url = "sitemap.xml", name = "Sitemap", slash = false, blank = true, size="s90"},
 ]
 
 toc = false
@@ -69,13 +69,15 @@ series = true
 series_items = 9 # Max number of items to display in series list, use 0 to disable
 #Series_parts = "$NUMBER_OF_PARTS part Series"
 
+#arrow_pagination = true # If set to true then the pagination will use the old arrows mode, be sure to also enable the icons.
+
 meta_index = { position="bottom", size="s90", author=false, readtime=false, readstring="min", date=true, updated=false, categories_tags=true, divider=" " }
 meta_post = { position="top", size="s95", author=true, readtime=false, readstring="min read", date=true, updated=true, categories_tags=true, divider=" " }
 
 hide_section_dates = false # hides the date for sections that use posts.html as their template.
 hide_page_nextprev_titles = false # hides the next/previous titles for pages that use page.html as their template.
 title_size_index = "s85"
-footer_size = "s90"
+footer_size = "s80" # the size of the copyright and powered by text
 footer_credit = true
 #footer_credit_override = '<p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> &#38; <a href="https://github.com/Jieiku/abridge/" target="_blank">Abridge</a></p>'
 #archive_reverse = true # Set to True to sort posts chronologically per year instead of newest first on the archive page: example.com/archive/
@@ -87,7 +89,7 @@ textlogo = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" vi
 
 sitedesc = false # enables or disables the display of the site description below the logo.
 headhr = false # show or hide horizontal rule below header
-foothr = true # show or hide horizontal rule above footer
+foothr = false # show or hide horizontal rule above footer
 
 ### $CURRENT_YEAR and $SITE_TITLE can be used anywhere within the copyright, you can change their position or you can also delete them and type whatever you want instead.
 #copyright = false # set to false to disable the copyright.
@@ -145,37 +147,21 @@ feed = false # this adds the RSS feed icon in the footer.
 
 
 ###############################################################################
-### Commenting System for visitors to leave comments on pages.
-###   hyvor talk
-###############################################################################
-
-#comments.hyvor = "9366" # hyvor website id, comment out to disable.
-#comments.hyvorcolor = "os" # set the color property for hyvor
-
-
-###############################################################################
 ### Resource Files
 ### You can load extra css files if you need to, just separate by comma:
 ### stylesheets = [ "abridge.css", "extra.css" ]
 ### search_library, library to use. valid values:
-###   false, "elasticlunr", "tinysearch", "stork"
-### offline: implies uglyurls=true and integrity=false, when true NPM/node will
-###   automatically set the path for the base_url, it will build the site,
-###   then set the base_url back to what it was. This is a way to build a completely
-###   offline site, a feature not possible with Zola alone.
-###   The PWA feature is another way to build an offline site, so there are now two
-###   different ways to build an offline site with Abridge.
+###   false, "elasticlunr", "elasticlunrjava", "pagefind", "tinysearch", "offline"
+###     elasticlunr - elasticlunr using the elasticlunr_json index format
+###     elasticlunrjava - elasticlunr using the elasticlunr_javascript index format
+###     pagefind - pagefind using the fuse_json index format
+###     tinysearch - tinysearch using the fuse_json index format
+###     offline - elasticlunr using the elasticlunr_javascript index format with content paths relative to the location on disk.
+###       (offline: implies uglyurls=true and integrity=false, node script will pass base_url argument as the path on disk.)
 ###
-### For most people the value of online_url will be the same as base_url.
-###   online_url is used to restore the base_url after generating an Offline site.
-###   When you set offline = true and run the npm script, the base_url is set to the absolute path on disk.
-###   Once you set offline = false, the base_url will be set back to the value of online_url when you run the npm script again.
+###       The PWA feature is another way to build an offline site, so there are now two
+###       different ways to build an offline site with Abridge.
 ###############################################################################
-
-# do NOT include a trailing slash on the online URL
-#online_url = "https://abridgecss.netlify.app"
-online_indexformat = "elasticlunr_json"# used to restore your preferred index format when offline = false
-offline = false # implies uglyurls=true and integrity=false, when true NPM/node will automatically set the path for the base_url, it will build the site, then set the base_url back to what it was.
 
 uglyurls = false # if set to true then links are generated with the full path. eg https://abridge.netlify.app/index.html
 integrity = true # increases site security, should normally be true. (setting to false is useful during js development)
@@ -187,10 +173,11 @@ js_prestyle = true # used to preload: FontAwesome, Katex, external Google Fonts
 js_switcher = true # The button that allows manually changing between light/dark mode.
 js_switcher_default = "dark" # default nojs switcher mode: dark, light (make sure to also set $switcherDefault in abridge.scss)
 
-search_library = 'elasticlunr'
+search_library = "elasticlunr"
 stylesheets = ["abridge.css"]
 
 webmanifest = "manifest.min.json" # Required for PWAs
+
 
 ###############################################################################
 ### PWA (Progressive Web Application)
@@ -203,7 +190,7 @@ webmanifest = "manifest.min.json" # Required for PWAs
 ###############################################################################
 
 pwa = true # true to load the service worker
-pwa_VER = '3.11.0' # Service Worker cache version. (increment if you need to force a new cache)
+pwa_VER = '3.12.1' # Service Worker cache version. (increment if you need to force a new cache)
 
 ### 3600=1hour, 28800=8hours, 86400=1day, 604800=1week, 1209600=2weeks
 pwa_NORM_TTL = 0 #  86400 is reasonable. html, json, xml, anything else undefined
@@ -224,6 +211,7 @@ pwa_cache_all = true
 ### List of Files for the PWA to initially Cache, used if pwa_cache_all = false
 pwa_BASE_CACHE_FILES = "'/js/theme.min.js','/js/theme_light.min.js','/abridge.css','/js/abridge.min.js','/','/404.html','/offline/','/manifest.min.json'"
 
+
 ###############################################################################
 ### Favicons, comment out a line to disable loading some or all of these if needed.
 ###############################################################################
@@ -239,14 +227,24 @@ favicon16 = "favicon-16x16.png" # favicon-16x16.png
 
 
 ###############################################################################
+### Commenting System for visitors to leave comments on pages.
+###   hyvor talk
+###############################################################################
+
+#comments.hyvor = "9366" # hyvor website id, comment out to disable.
+#comments.hyvorcolor = "os" # set the color property for hyvor
+
+
+###############################################################################
 ### Icons
 ### Loading the entire fontawesome icon collection will negatively impact your sites performance.
-### For a lightweight solution consider adding only the icons that you need to the following file:
-### https://github.com/Jieiku/abridge/blob/master/sass/include/_icons.scss
+### For a lightweight solution consider adding only the icons that you need.
+### you can load individual scss based svg icons by including them in the _extra.scss file
+### https://github.com/Jieiku/abridge/blob/master/COPY-TO-ROOT-SASS/_extra.scss
 ###############################################################################
 
 ### To disable any of these icons set them to "false" (will default to unicode icons instead)
-#icon_search = "svgs search" # Search button in search box.
+#icon_search = "svgs svgm search" # Search button in search box.
 #icon_adjust = "svgs adjust" # Theme Switcher button in top menu. (add class svgh to change colors on hover)
 #icon_first = "svgs svgh angll" # Pagination First Page.
 #icon_prev = "svgs svgh angl" # Pagination Previous Page.

@@ -1,32 +1,23 @@
 {
-  "name": "abridge.css",
-  "version": "0.4.1",
-  "description": "A classless CSS library",
-  "main": "dist/abridge.min.css",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jieiku/abridge.css.git"
-  },
-  "keywords": [
-    "css",
-    "html",
-    "sanitize",
-    "normalize",
-    "semantic",
-    "style"
-  ],
+  "name": "abridge-bundle",
+  "version": "2.0.0",
+  "description": "Abridge - set PWA cache files list, bundle and minify js",
   "author": "Jake G <106644+Jieiku@users.noreply.github.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Jieiku/abridge.css/issues"
-  },
-  "homepage": "https://github.com/Jieiku/abridge.css",
+  "homepage": "https://github.com/Jieiku/abridge",
   "scripts": {
-    "main": "sass --no-source-map --style compressed sass/abridge.scss dist/abridge.min.css",
-    "start": "yarn main"
+    "abridge": "node -e \"if ( require('fs').existsSync('./themes/abridge/package_abridge.js')) {require('fs').copyFileSync('./themes/abridge/package_abridge.js', './package_abridge.js')}\" && node package_abridge.js",
+    "offline": "npm run abridge -- offline",
+    "elasticlunrjava": "npm run abridge -- elasticlunrjava",
+    "elasticlunr": "npm run abridge -- elasticlunr",
+    "pagefind": "npm run abridge -- pagefind",
+    "tinysearch": "npm run abridge -- tinysearch"
   },
   "dependencies": {
-    "node-sass": "^7.0.1",
-    "sass": "^1.66.1"
+    "fast-toml": "^0.5.4",
+    "jsonminify": "^0.4.2",
+    "pagefind": "^1.1.0",
+    "replace-in-file": "^8.1.0",
+    "uglify-js": "^3.17.4"
   }
 }
