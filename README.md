@@ -21,7 +21,7 @@ Abridge CSS uses CSS variables and is structured to be modular, so you can inclu
 
 Abridge CSS is very lightweight, and the size can be further tuned by including only what you plan to use.
 
-I created Abridge.css primarily to use with Zola, and because I was after a set of features: semantic/classless, dark mode, responsive text, Normalize, Sanitize, and overall small size. I researched various css frameworks prior to creating this framework: [tabulated comparison of css frameworks](https://github.com/Jieiku/classless-css/blob/master/README.md)
+I created Abridge.css primarily to use with Zola, and because I was after a set of features: semantic/classless, dark mode, responsive text, Normalize, Sanitize, and overall small size. I researched various css frameworks prior to creating this framework.
 
 ## Features:
 
@@ -37,7 +37,7 @@ I created Abridge.css primarily to use with Zola, and because I was after a set 
 
 ## Download
 
-See [https://raw.githubusercontent.com/Jieiku/abridge.css/master/dist/abridge.css](https://raw.githubusercontent.com/Jieiku/abridge.css/master/dist/abridge.css)
+See [https://raw.githubusercontent.com/Jieiku/abridge.css/refs/heads/master/dist/abridge.min.css](https://raw.githubusercontent.com/Jieiku/abridge.css/refs/heads/master/dist/abridge.min.css)
 
 ## Customizing
 
