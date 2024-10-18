@@ -37,7 +37,7 @@ I created Abridge.css primarily to use with Zola, and because I was after a set 
 
 ## Download
 
-See [https://raw.githubusercontent.com/Jieiku/abridge.css/refs/heads/master/dist/abridge.min.css](https://raw.githubusercontent.com/Jieiku/abridge.css/refs/heads/master/dist/abridge.min.css)
+See [https://raw.githubusercontent.com/Jieiku/abridge.css/master/dist/abridge.min.css](https://raw.githubusercontent.com/Jieiku/abridge.css/master/dist/abridge.min.css)
 
 ## Customizing
 
